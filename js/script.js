@@ -1,5 +1,3 @@
-const myLibrary = [];
-
 function Book(title, author, pageCount, hasRead) {
   this.title = title;
   this.author = author;
@@ -7,20 +5,7 @@ function Book(title, author, pageCount, hasRead) {
   this.hasRead = hasRead;
 }
 
-Book.prototype.info = function() {
-  if (this.hasRead === true) {
-    return this.title + " by " + this.author + 
-           ", " + this.pageCount + " pages, has been read"; 
-  }
-  else {
-    return this.title + " by " + this.author + 
-           ", " + this.pageCount + " pages, has not been read"; 
-  }
-}
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-}
 
 const bookForm = document.querySelector("#book-form");
 bookForm.addEventListener("submit", function(event) {
@@ -40,15 +25,14 @@ bookForm.addEventListener("submit", function(event) {
   bookForm["has-read"].checked = false;
 
   createBookCard(formData);
-
-  console.log(formData.info());
 })
 
 function createBookCard(book) {
+  console.log("test");
   //create elements
+  const bookList = document.querySelector("#book-list");
   const bookEntry = document.createElement("ul");
   const bookEntryContainer = document.createElement("div");
-  const bookList = document.querySelector("#book-list");
   const removeBtn = document.createElement("button");
   //nest elements
   bookEntryContainer.appendChild(bookEntry); 
@@ -56,10 +40,11 @@ function createBookCard(book) {
   //style elements
   bookEntryContainer.classList.add("book");
   removeBtn.textContent = "Remove";
+  removeBtn.addEventListener("click", function(event) {
+    bookEntryContainer.remove();
+  })
 
   for (const key in book) {
-    if (key === "info") continue;
-    
     const listItem = document.createElement("li");
     if (key === "hasRead") {
       listItem.textContent = book[key] == true ? "Has read" : "Has not read";
@@ -69,3 +54,18 @@ function createBookCard(book) {
   }
   bookEntry.appendChild(removeBtn);
 }
+
+function runPage() {
+  const myLibrary = [];
+  const bookList = document.querySelector("#book-list");
+  //inserts generic book entry to start list
+  const genericBook = new Book("Tao te Ching", "Lao Tsu", "110", true);
+  addBookToLibrary(myLibrary, genericBook);
+  createBookCard(genericBook);
+}
+
+function addBookToLibrary(myLibrary, book) {
+  myLibrary.push(book);
+}
+
+runPage();
