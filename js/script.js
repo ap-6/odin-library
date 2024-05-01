@@ -35,6 +35,7 @@ function addRemoveButton(book, myLibrary, bookEntry) {
   //make remove button
   const removeBtn = document.createElement("button");
   removeBtn.textContent = "Remove";
+  removeBtn.classList.add("removeBtn");
   removeBtn.addEventListener("click", function() {
     bookEntry.remove();
     for (let  i = 0; i < myLibrary.length; i++) {
@@ -52,7 +53,7 @@ function addRemoveButton(book, myLibrary, bookEntry) {
 
 function addHasReadButton(book, myLibrary, listItem) {
   const hasReadButton = document.createElement("button");
-  
+
   if (book.hasRead == true) {
     hasReadButton.textContent = "Has read";
     hasReadButton.classList.add("has-read");
@@ -103,7 +104,7 @@ function updateBookForm(myLibrary, bookForm) {
     bookForm.title.value, 
     bookForm.author.value, 
     bookForm["page-count"].value, 
-    bookForm["has-read"].checked
+    Boolean(+bookForm["has-read"].value)
   );
   
   //reset form
@@ -120,8 +121,10 @@ function runPage() {
   const myLibrary = [];
 
   //inserts generic book entry to start list
-  const genericBook = new Book("Tao te Ching", "Lao Tsu", "110", true);
-  addBookToLibrary(myLibrary, genericBook);
+  const genericBook1 = new Book("Tao te Ching", "Lao Tsu", "110", true);
+  const genericBook2 = new Book("The Myth of Sisyphus", "Albert Camus", "138", false);
+  addBookToLibrary(myLibrary, genericBook1);
+  addBookToLibrary(myLibrary, genericBook2);
   displayLibrary(myLibrary);
 
   const bookForm = document.querySelector("#book-form");

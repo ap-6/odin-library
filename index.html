@@ -14,24 +14,30 @@
     </header>
     <main>
         <form id="book-form">
-            <div>
-                <label for="title">Book title</label>
-                <input type="text" id="title" name="title">
+            <div class="user-input">
+                <div class="input-container">
+                    <label for="title">Book title</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div class="input-container">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author">
+                </div>
+                <div class="input-container">
+                    <label for="page-count">Page count</label>
+                    <input type="number" id="page-count" name="page-count">
+                </div>
+                <div class="input-container">
+                    <label for="has-read">Have you read the book?</label>
+                    <select name="has-read" id="has-read">
+                        <option value="0" selected hidden disabled></option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
             </div>
             <div>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div>
-                <label for="page-count">Page count</label>
-                <input type="text" id="page-count" name="page-count">
-            </div>
-            <div>
-                <label for="has-read">Have you read the book?</label>
-                <input type="checkbox" id="has-read" name="has-read">
-            </div>
-            <div>
-                <button>Add</button>
+                <button class="add-btn">Add</button>
             </div>
         </form>
 
