@@ -52,8 +52,16 @@ function addRemoveButton(book, myLibrary, bookEntry) {
 
 function addHasReadButton(book, myLibrary, listItem) {
   const hasReadButton = document.createElement("button");
-  hasReadButton.textContent = book.hasRead == true ? "Has read" : "Has not read";
   
+  if (book.hasRead == true) {
+    hasReadButton.textContent = "Has read";
+    hasReadButton.classList.add("has-read");
+  }
+  else {
+    hasReadButton.textContent = "Has not read";
+    hasReadButton.classList.add("has-not-read");
+  }
+
   hasReadButton.addEventListener("click", function() {
     //toggle myLibrary book
     for (let libraryBook in myLibrary) {
@@ -65,8 +73,14 @@ function addHasReadButton(book, myLibrary, listItem) {
     //toggle DOM book
     if (hasReadButton.textContent == "Has read") {
       hasReadButton.textContent = "Has not read";
+      hasReadButton.classList.add("has-not-read");
+      hasReadButton.classList.remove("has-read");
     }
-    else hasReadButton.textContent = "Has read";
+    else {
+      hasReadButton.textContent = "Has read";
+      hasReadButton.classList.add("has-read");
+      hasReadButton.classList.remove("has-not-read");
+    }
   })
 
   listItem.appendChild(hasReadButton);
