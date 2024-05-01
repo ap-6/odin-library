@@ -23,7 +23,7 @@ function createBookCard(book, myLibrary) {
 
     const listItem = document.createElement("li");
     if (key === "hasRead") {
-      listItem.textContent = book[key] == true ? "Has read" : "Has not read";
+      addHasReadButton(book, myLibrary, listItem);
     }
     else listItem.textContent = book[key];
     bookEntry.appendChild(listItem);
@@ -50,7 +50,27 @@ function addRemoveButton(book, myLibrary, bookEntry) {
   bookEntry.appendChild(btnListItem);
 }
 
+function addHasReadButton(book, myLibrary, listItem) {
+  const hasReadButton = document.createElement("button");
+  hasReadButton.textContent = book.hasRead == true ? "Has read" : "Has not read";
+  
+  hasReadButton.addEventListener("click", function() {
+    //toggle myLibrary book
+    for (let libraryBook in myLibrary) {
+      if (myLibrary[libraryBook].id = book.id) {
+        myLibrary[libraryBook].hasRead = !myLibrary[libraryBook].hasRead;
+      }
+      break;
+    }
+    //toggle DOM book
+    if (hasReadButton.textContent == "Has read") {
+      hasReadButton.textContent = "Has not read";
+    }
+    else hasReadButton.textContent = "Has read";
+  })
 
+  listItem.appendChild(hasReadButton);
+}
 
 function addBookToLibrary(myLibrary, book) {
   myLibrary.push(book);
