@@ -52,7 +52,7 @@ form {
     gap: 10px;
 }
 
-.book-list {
+#book-list {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
