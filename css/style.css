@@ -40,13 +40,6 @@ ul.book {
     column-gap: 10px;
 }
 
-input, select {
-    background-color: rgb(66, 66, 66);
-    color: white;
-    outline: none;
-    border: 1px solid black;
-}
-
 #book-form {
     display: flex;
     flex-direction: column;
@@ -126,12 +119,21 @@ button:hover {
 
 .input-container input,
 .input-container select {
-    padding: 5px;
+    padding: 8px;
     border-radius: 5px;
+    background-color: rgb(66, 66, 66);
+    color: white;
+    outline: none;
+    border: 1px solid black;
+    width: 100%;
 }
 
 .user-input {
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 3fr 3fr 1fr 2fr;
+    gap: 30px;
+}
+
+.bold {
+    font-weight: bold;
 }
