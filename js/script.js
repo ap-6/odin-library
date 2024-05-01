@@ -13,16 +13,14 @@ function createBookCard(book, myLibrary) {
   //create elements
   const bookList = document.querySelector("#book-list");
   const bookEntry = document.createElement("ul");
-  const bookEntryContainer = document.createElement("div");
   const removeBtn = document.createElement("button");
   //nest elements
-  bookEntryContainer.appendChild(bookEntry); 
-  bookList.appendChild(bookEntryContainer);
+  bookList.appendChild(bookEntry);
   //style elements
-  bookEntryContainer.classList.add("book");
+  bookEntry.classList.add("book");
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", function() {
-    bookEntryContainer.remove();
+    bookEntry.remove();
     for (let  i = 0; i < myLibrary.length; i++) {
       if (book.id === myLibrary[i].id) {
         myLibrary.splice(i, 1);
@@ -41,7 +39,9 @@ function createBookCard(book, myLibrary) {
     else listItem.textContent = book[key];
     bookEntry.appendChild(listItem);
   }
-  bookEntry.appendChild(removeBtn);
+  const btnListItem = document.createElement("li");
+  btnListItem.appendChild(removeBtn);
+  bookEntry.appendChild(btnListItem);
 }
 
 function runPage() {

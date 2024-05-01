@@ -27,7 +27,7 @@ main {
 
 }
 
-.book ul {
+ul.book {
     margin: 0px;
     padding: 0px;
     list-style-type: none;
