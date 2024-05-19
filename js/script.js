@@ -1,12 +1,16 @@
-function Book(title, author, pageCount, hasRead) {
-  Book.nextId = (Book.nextId || 0) + 1;
+class Book {
+  static nextId = 0;
 
-  this.title = title;
-  this.author = author;
-  this.pageCount = pageCount;
-  this.hasRead = hasRead;
-  this.onDisplay = false;
-  this.id = Book.nextId;
+  constructor(title, author, pageCount, hasRead) {
+    this.title = title;
+    this.author = author;
+    this.pageCount = pageCount;
+    this.hasRead = hasRead;
+    this.onDisplay = false;
+    this.id = Book.nextId;
+
+    Book.nextId++;
+  }
 }
 
 function createBookCard(book, myLibrary) {
